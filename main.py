@@ -156,6 +156,41 @@ small {
   <small>Laporan terakhir diterima</small>
   <div id="net-updated" style="margin-top:8px">Belum ada laporan</div>
 </div>
+<div class="card" style="margin-bottom:20px">
+  <h2 style="margin-top:0">Topologi Jaringan</h2>
+  <p class="muted">Gambaran hubungan perangkat jaringan</p>
+
+  <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px 0">
+    <div class="card" style="width:85%;max-width:280px;text-align:center">
+      <strong>INTERNET / STARLINK</strong>
+    </div>
+
+    <div style="font-size:24px;color:#38bdf8">↓</div>
+
+    <div class="card" style="width:85%;max-width:280px;text-align:center;border:1px solid #38bdf8">
+      <strong>MIKROTIK ROUTER</strong>
+      <div class="muted">Gateway jaringan</div>
+    </div>
+
+    <div style="font-size:24px;color:#38bdf8">↓</div>
+
+    <div style="display:flex;gap:12px;width:100%;justify-content:center;flex-wrap:wrap">
+      <div class="card" style="flex:1;min-width:120px;max-width:220px;text-align:center">
+        <strong>CCTV</strong>
+        <div class="muted">192.168.1.235</div>
+        <div id="topo-cctv" class="status wait">Menunggu data</div>
+      </div>
+
+      <div class="card" style="flex:1;min-width:120px;max-width:220px;text-align:center">
+        <strong>DATA LOGGER</strong>
+        <div class="muted">192.168.88.15</div>
+        <div id="topo-logger" class="status wait">Menunggu data</div>
+      </div>
+    </div>
+  </div>
+
+  <small class="muted">Catatan: topologi ini masih gambaran. Koneksi aktual perlu diverifikasi.</small>
+</div>
 <div class="grid">
   <div class="card">
     <small>MIKROTIK ROUTER</small>
