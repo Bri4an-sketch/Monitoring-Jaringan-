@@ -73,6 +73,20 @@ h1 {
   gap: 16px;
   margin-top: 28px;
 }
+
+@media (max-width: 600px) {
+  body {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
 .card {
   background: linear-gradient(145deg, #12243b, #0c192b);
   border: 1px solid #243c5b;
@@ -84,6 +98,15 @@ h1 {
 .card:hover {
   border-color: #398bff;
   transform: translateY(-2px);
+}
+.card:nth-child(1) {
+  border-bottom: 3px solid #398bff;
+}
+.card:nth-child(2) {
+  border-bottom: 3px solid #2ee6a6;
+}
+.card:nth-child(3) {
+  border-bottom: 3px solid #a66bff;
 }
 .status {
   font-size: 24px;
