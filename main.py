@@ -242,6 +242,24 @@ if (nr && nc && nl && nu) {
   nl.className = 'status ' + (!hasReport ? 'wait' : fresh && d.logger_replies > 0 ? 'ok' : fresh ? 'bad' : 'wait');
 
   nu.textContent = hasReport ? d.received_at : 'Belum ada laporan';
+  const tc = document.getElementById('topo-cctv');
+const tl = document.getElementById('topo-logger');
+
+if (tc && tl) {
+  tc.textContent = !hasReport ? 'Menunggu data' :
+    !fresh ? 'Data kedaluwarsa' :
+    d.cctv_replies > 0 ? 'TERJANGKAU' : 'TIDAK MERESPONS';
+
+  tc.className = 'status ' +
+    (!hasReport ? 'wait' : fresh && d.cctv_replies > 0 ? 'ok' : fresh ? 'bad' : 'wait');
+
+  tl.textContent = !hasReport ? 'Menunggu data' :
+    !fresh ? 'Data kedaluwarsa' :
+    d.logger_replies > 0 ? 'TERJANGKAU' : 'TIDAK MERESPONS';
+
+  tl.className = 'status ' +
+    (!hasReport ? 'wait' : fresh && d.logger_replies > 0 ? 'ok' : fresh ? 'bad' : 'wait');
+}
 }
   if (!d.received_at) {
    document.getElementById('updated').textContent =
