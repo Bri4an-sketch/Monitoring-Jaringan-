@@ -68,15 +68,25 @@ small{color:#9eacbd}
 <div class="muted">MikroTik · CCTV · Data Logger</div>
 <div id="updated" class="muted">Menunggu laporan pertama...</div>
 <div class="grid">
- <div class="card"><small>MIKROTIK AGENT</small>
- <div id="router" class="status wait">Belum ada data</div>
- <div id="uptime">Uptime: -</div></div>
- <div class="card"><small>CCTV</small>
- <div id="cctv" class="status wait">Belum ada data</div>
- <div id="cctvdetail">Ping: -</div></div>
- <div class="card"><small>DATA LOGGER</small>
- <div id="logger" class="status wait">Belum ada data</div>
- <div id="loggerdetail">Ping: -</div></div>
+  <div class="card">
+    <small>MIKROTIK ROUTER</small>
+    <div id="router" class="status wait">Belum ada data</div>
+    <div id="uptime">Uptime: -</div>
+  </div>
+
+  <div class="card">
+    <small>CCTV</small>
+    <div id="cctv" class="status wait">Belum ada data</div>
+    <div id="cctvdetail">Balasan ping: -</div>
+    <div class="muted">IP: 192.168.1.235</div>
+  </div>
+
+  <div class="card">
+    <small>DATA LOGGER</small>
+    <div id="logger" class="status wait">Belum ada data</div>
+    <div id="loggerdetail">Balasan ping: -</div>
+    <div class="muted">IP: 192.168.88.15</div>
+  </div>
 </div>
 <script>
 function status(id, online, label) {
