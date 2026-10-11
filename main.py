@@ -52,15 +52,58 @@ def dashboard(_: None = Depends(check_dashboard)):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Network Monitor</title>
 <style>
-body{font-family:Arial,sans-serif;background:#101722;color:#eef2f7;
-margin:0;padding:24px}
-h1{margin-bottom:5px}.muted{color:#9eacbd}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:14px;margin-top:24px}
-.card{background:#1b2635;border:1px solid #344154;border-radius:14px;padding:20px}
-.status{font-size:23px;font-weight:bold;margin:12px 0}
-.ok{color:#42d392}.bad{color:#ff7777}.wait{color:#ffd166}
-small{color:#9eacbd}
+body {
+  font-family: Arial, sans-serif;
+  background: #07111f;
+  color: #e8f0ff;
+  margin: 0;
+  padding: 24px;
+}
+h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+.muted {
+  color: #8fa8cc;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+.card {
+  background: linear-gradient(145deg, #12243b, #0c192b);
+  border: 1px solid #243c5b;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.card:hover {
+  border-color: #398bff;
+  transform: translateY(-2px);
+}
+.status {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 16px 0;
+}
+.ok {
+  color: #2ee6a6;
+}
+.bad {
+  color: #ff647c;
+}
+.wait {
+  color: #ffd166;
+}
+small {
+  color: #9db4d4;
+  letter-spacing: 1px;
+  font-size: 12px;
+}
 </style>
 </head>
 <body>
