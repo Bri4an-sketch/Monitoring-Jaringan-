@@ -133,6 +133,29 @@ small {
 <h1>Network Monitor</h1>
 <div class="muted">MikroTik · CCTV · Data Logger</div>
 <div id="updated" class="muted">Menunggu laporan pertama...</div>
+<div class="card">
+  <h2 style="margin-top:0">Status Jaringan</h2>
+  <p class="muted">Ringkasan kondisi perangkat</p>
+
+  <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <div>
+      <small>MIKROTIK</small>
+      <div id="net-router" class="status wait">Menunggu data</div>
+    </div>
+    <div>
+      <small>CCTV</small>
+      <div id="net-cctv" class="status wait">Menunggu data</div>
+    </div>
+    <div>
+      <small>DATA LOGGER</small>
+      <div id="net-logger" class="status wait">Menunggu data</div>
+    </div>
+  </div>
+
+  <hr style="border-color:#243c5b">
+  <small>Laporan terakhir diterima</small>
+  <div id="net-updated" style="margin-top:8px">Belum ada laporan</div>
+</div>
 <div class="grid">
   <div class="card">
     <small>MIKROTIK ROUTER</small>
@@ -165,6 +188,26 @@ async function refresh() {
   const r = await fetch('/api/status', {cache:'no-store'});
   if (!r.ok) throw Error('Tidak bisa membaca status');
   const d = await r.json();
+  const nr = document.getElementById('net-router');
+const nc = document.getElementById('net-cctv');
+const nl = document.getElementById('net-logger');
+const nu = document.getElementById('net-updated');
+
+if (nr && nc && nl && nu) {
+  const hasReport = Boolean(d.received_at);
+  const fresh = hasReport && !d.stale;
+
+  nr.textContent = !hasReport ? 'Menunggu data' : fresh ? 'AGENT ONLINE' : 'LAPORAN TERPUTUS';
+  nr.className = 'status ' + (!hasReport ? 'wait' : fresh ? 'ok' : 'bad');
+
+  nc.textContent = !hasReport ? 'Menunggu data' : fresh ? (d.cctv_replies > 0 ? 'TERJANGKAU' : 'TIDAK MERESPONS') : 'DATA KEDALUWARSA';
+  nc.className = 'status ' + (!hasReport ? 'wait' : fresh && d.cctv_replies > 0 ? 'ok' : fresh ? 'bad' : 'wait');
+
+  nl.textContent = !hasReport ? 'Menunggu data' : fresh ? (d.logger_replies > 0 ? 'TERJANGKAU' : 'TIDAK MERESPONS') : 'DATA KEDALUWARSA';
+  nl.className = 'status ' + (!hasReport ? 'wait' : fresh && d.logger_replies > 0 ? 'ok' : fresh ? 'bad' : 'wait');
+
+  nu.textContent = hasReport ? d.received_at : 'Belum ada laporan';
+}
   if (!d.received_at) {
    document.getElementById('updated').textContent =
      'Belum menerima laporan dari MikroTik';
